@@ -29,7 +29,7 @@ const RegistrationForm: FC = () => {
             .select()
             .eq('studentEmail', emailData);
 
-        if(data.length != 0) {
+        if(data!==null && data.length != 0) {
             const notify = () => toast.success("เข้าสู่ระบบสำเร็จ");
             let idx = 0;
             console.log(data[idx].name==null);
@@ -60,7 +60,7 @@ const RegistrationForm: FC = () => {
             .select()
             .eq('studentEmail', emailData);
 
-        console.log(data[0]);
+        // console.log(data[0]);
     }
 
     async function updateData() {
@@ -102,7 +102,7 @@ const RegistrationForm: FC = () => {
                             </Text>
                         </Grid>
                         <Grid xs={6}>
-                            <Text u>
+                            <Text>
                                 คอร์สที่เลือก <u>{studentSize}</u>
                             </Text>
                         </Grid>
