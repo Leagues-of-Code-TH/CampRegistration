@@ -73,7 +73,7 @@ const RegistrationForm: FC = () => {
                 parentTel: studentPTel,
                 studentTel: studentSTel,
                 school: studentEI,
-                isRegistered: false
+                isRegistered: true
             })
             .eq('Key', studentKey);
 
