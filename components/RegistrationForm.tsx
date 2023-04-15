@@ -84,7 +84,7 @@ const RegistrationForm: FC = () => {
                 address: studentAddress,
                 allergy: allergy,
                 Package: studentPackage,
-                isRegistered: false
+                isRegistered: true
             })
             .eq('Key', studentKey);
 
