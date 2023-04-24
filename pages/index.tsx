@@ -16,7 +16,7 @@ export default function Home() {
         <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet' />
       </Head>
       <Container style={{ fontFamily: 'Kanit' }}>
-        <Grid.Container style={{ padding: "10rem", paddingTop: "15rem", background: "white" }} gap={2}>
+        <Grid.Container style={{ padding: "3rem", paddingTop: "5rem", background: "white" }} gap={2}>
           <RegistrationNavbar />
           {/* <RegistrationForm /> */}
           <CampResultForm />

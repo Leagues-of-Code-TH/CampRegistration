@@ -54,44 +54,44 @@ const CampResultForm: FC = () => {
     return (isValid ? (
         <>
             <Grid.Container gap={2}>
-                <Grid xs={4}>
+                <Grid md={4} xs={12}>
                     <Text h4> ชื่อ: {name} {lastname} </Text>
                 </Grid>
-                <Grid xs={4}>
+                <Grid md={4} xs={12}>
                     <Text h4> รูปแบบการเข้าร่วม: {format} </Text>
                 </Grid>
-                <Grid xs={4}>
+                <Grid md={4} xs={12}>
                     <Text h4> ภาษาที่ใช้เขียนโปรแกรม: {lang} </Text>
                 </Grid>
                 <Grid.Container gap={2} direction="row">
-                    <Grid xs={4}>
+                    <Grid sm={6}>
                         <Text h3> คะแนน Participation (10) </Text>
                     </Grid>
-                    <Grid xs={3}>
+                    <Grid sm={6}>
                         <Text h3> {participation} </Text>
                     </Grid>
                 </Grid.Container>
                 <Grid.Container gap={2} direction="row">
-                    <Grid xs={4}>
+                    <Grid sm={6}>
                         <Text h3> คะแนนงานในชั้นเรียน (40) </Text>
                     </Grid>
-                    <Grid xs={3}>
+                    <Grid sm={6}>
                         <Text h3> {workshop} </Text>
                     </Grid>
                 </Grid.Container>
                 <Grid.Container gap={2} direction="row">
-                    <Grid xs={4}>
+                    <Grid sm={6}>
                         <Text h3> คะแนนสอบ Final (50) </Text>
                     </Grid>
-                    <Grid xs={3}>
+                    <Grid sm={6}>
                         <Text h3> {final} </Text>
                     </Grid>
                 </Grid.Container>
                 <Grid.Container gap={2} direction="row">
-                    <Grid xs={4}>
+                    <Grid sm={6}>
                         <Text h2> คะแนนรวม: </Text>
                     </Grid>
-                    <Grid xs={3}>
+                    <Grid sm={6}>
                         <Text h2> {total} </Text>
                     </Grid>
                 </Grid.Container>
@@ -107,7 +107,7 @@ const CampResultForm: FC = () => {
                             ดาวน์โหลดเกียรติบัตร
                         </Button>
                     </Link>
-                    <Spacer x={1} />
+                    <Spacer x={1} y={1}/>
 
 
                     {excellenceLink && <Link href={`${excellenceLink}`}>
@@ -115,7 +115,7 @@ const CampResultForm: FC = () => {
                             ดาวน์โหลดเกียรติบัตรระดับ Excellence
                         </Button>
                     </Link>}
-                    <Spacer x={1} />
+                    <Spacer x={1} y={1}/>
 
                     <Link href="/">
                         <Button color='error' auto href="/"> กลับ </Button>
@@ -126,10 +126,10 @@ const CampResultForm: FC = () => {
     ) :
         (
             <>
-                <Grid xs={6} direction="column">
-                    <Input labelPlaceholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                <Grid xs={12} direction="column">
+                    <Input labelPlaceholder="Email" onChange={(e) => setEmail(e.target.value)} fullWidth/>
                     <Spacer y={1} />
-                    <Button onClick={searchEmail} color='primary' css={{ w: 200 }}> ค้นหา </Button>
+                    <Button onClick={searchEmail} color='primary' css={{ w: 100}}> ค้นหา </Button>
                 </Grid>
             </>
         )
