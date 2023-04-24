@@ -21,6 +21,11 @@ const RegistrationForm: FC = () => {
     const [studentEI, setEI] = useState<string>(""); // educational institution
     const [studentSEmail, setSEmail] = useState<string>(""); 
 
+    // P'Ve additional data
+    const [studentAddress, setAddress] = useState<string>(""); // mutable
+    const [allergy, setAllergy] = useState<string>(""); // mutable
+    const [studentPackage, setPackage] = useState<string>(""); // mutable
+
     const [studentKey, setKey] = useState<string>("");
 
     async function searchEmail() {
@@ -46,6 +51,9 @@ const RegistrationForm: FC = () => {
             setEI(data[idx].school);
             setSEmail(data[idx].studentEmail);
             setKey(data[idx].Key);
+            setAddress(data[idx].address);
+            setAllergy(data[idx].allergy);
+            setPackage(data[idx].Package);
             notify();
             setValid(true);
         }else {
@@ -73,6 +81,9 @@ const RegistrationForm: FC = () => {
                 parentTel: studentPTel,
                 studentTel: studentSTel,
                 school: studentEI,
+                address: studentAddress,
+                allergy: allergy,
+                Package: studentPackage,
                 isRegistered: true
             })
             .eq('Key', studentKey);
@@ -88,47 +99,60 @@ const RegistrationForm: FC = () => {
                 isValid ? (
                     <>
                         <Grid xs={4}>
-                            <Input placeholder="name" width="100%" value={studentName} onChange={(e) => setName(e.target.value)}/>
+                            <Input label="name" width="100%" value={studentName} onChange={(e) => setName(e.target.value)}/>
                         </Grid>
                         <Grid xs={4}>
-                            <Input placeholder="lastname" width="100%" value={studentLastname} onChange={(e) => setLastname(e.target.value)}/>
+                            <Input label="lastname" width="100%" value={studentLastname} onChange={(e) => setLastname(e.target.value)}/>
                         </Grid>
                         <Grid xs={4}>
-                            <Input placeholder="nickname" width="100%" value={studentNickname} onChange={(e) => setNickname(e.target.value)}/>
+                            <Input label="nickname" width="100%" value={studentNickname} onChange={(e) => setNickname(e.target.value)}/>
                         </Grid>
-                        <Grid xs={6}>
+                        <Grid xs={4}>
                             <Text>
-                                คอร์สที่เลือก <u>{studentLanguage}</u>
+                                คอร์สที่เลือก: <u>{studentLanguage}</u>
+                            </Text>
+                        </Grid>
+                        <Grid xs={4}>
+                            <Text>
+                                แพ็คเกจ: <u>{studentPackage}</u>
+                            </Text>
+                        </Grid>
+                        <Grid xs={4}>
+                            <Text>
+                                ไซส์เสื้อ: <u>{studentSize}</u>
                             </Text>
                         </Grid>
                         <Grid xs={6}>
-                            <Text>
-                                คอร์สที่เลือก <u>{studentSize}</u>
-                            </Text>
+                            <Input label="เบอร์ผู้ปกครอง" width="100%" value={studentPTel} onChange={(e) => setPTel(e.target.value)}/>
                         </Grid>
                         <Grid xs={6}>
-                            <Input placeholder="parent tel" width="100%" value={studentPTel} onChange={(e) => setPTel(e.target.value)}/>
+                            <Input label="เบอร์นักเรียน" width="100%" value={studentSTel} onChange={(e) => setSTel(e.target.value)}/>
                         </Grid>
                         <Grid xs={6}>
-                            <Input placeholder="student tel" width="100%" value={studentSTel} onChange={(e) => setSTel(e.target.value)}/>
+                            <Input label="โรงเรียน/สถาบัน" width="100%" value={studentEI} onChange={(e) => setEI(e.target.value)}/>
                         </Grid>
                         <Grid xs={6}>
-                            <Input placeholder="educational institution" width="100%" value={studentEI} onChange={(e) => setEI(e.target.value)}/>
+                            <Input label="อีเมลนักเรียน" width="100%" value={studentSEmail} readOnly/>
                         </Grid>
                         <Grid xs={6}>
-                            <Input placeholder="email" width="100%" value={studentSEmail} onChange={(e) => setSEmail(e.target.value)} readOnly/>
+                            <Input label="ที่อยู่" width="100%" value={studentAddress} onChange={(e) => setAddress(e.target.value)}/>
+                        </Grid>
+                        <Grid xs={6}>
+                            <Input label="อาหารที่แพ้" width="100%" value={allergy} onChange={(e) => setAllergy(e.target.value)}/>
                         </Grid>
                         <Grid xs={12} direction="column">
                             <Button onClick={updateData} color='primary'>Submit</Button>    
                         </Grid>
                     </>
                 ) : (
-                    <Grid xs={12} direction="column">
-                        <Input placeholder="email" onChange={(e) => setEmail(e.target.value)}/>
+                    <>
+                    <Grid xs={6} direction="column">
+                        <Input labelPlaceholder="Email" onChange={(e) => setEmail(e.target.value)}/>
                         <Spacer y={1}/>
-                        <Button onClick={searchEmail} color='primary'>Search</Button>
-                        {/* <Button onClick={queryData}>Debug</Button> */}
+                        <Button onClick={searchEmail} color='primary' css={{ w: 200}}> ค้นหา </Button>
                     </Grid>
+                        {/* <Button onClick={queryData}>Debug</Button> */}
+                    </>
                 )
             }
         </>
