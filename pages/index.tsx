@@ -3,7 +3,7 @@ import { Container, Grid, Text } from '@nextui-org/react'
 import RegistrationNavbar from '@/components/RegistrationNavbar'
 import RegistrationForm from '@/components/RegistrationForm'
 import { ToastContainer } from 'react-toastify'
-
+import CampResultForm from '@/components/CampResultForm'
 import 'react-toastify/dist/ReactToastify.css';
 import Head from 'next/head'
 
@@ -18,7 +18,8 @@ export default function Home() {
       <Container style={{ fontFamily: 'Kanit' }}>
         <Grid.Container style={{ padding: "10rem", paddingTop: "15rem", background: "white" }} gap={2}>
           <RegistrationNavbar />
-          <RegistrationForm />
+          {/* <RegistrationForm /> */}
+          <CampResultForm />
           <ToastContainer />
         </Grid.Container>
       </Container>
